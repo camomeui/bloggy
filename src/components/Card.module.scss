@@ -1,0 +1,49 @@
+@use "../styles/mixins.scss";
+
+.container {
+  @include mixins.stack(0.5rem);
+
+  border: 1px solid var(--cmm-color-border-base);
+  border-radius: var(--cmm-radius-lg);
+  padding: 1rem;
+  position: relative;
+
+  [data-theme="dark"] & {
+    background: var(--cmm-color-surface-1);
+
+    &:hover {
+      background: var(--cmm-color-surface-2);
+    }
+  }
+
+  &:hover {
+    background: var(--cmm-color-surface-1);
+  }
+
+  h2,
+  h3 {
+    font-weight: var(--cmm-font-weight-bold);
+    font-size: var(--cmm-font-size-lg);
+    line-height: 1.1;
+  }
+
+  a::before {
+    content: "";
+    cursor: inherit;
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  p {
+    color: var(--cmm-color-font-muted);
+  }
+}
+
+.datetime {
+  font-size: var(--cmm-font-size-sm);
+}

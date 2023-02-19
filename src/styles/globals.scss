@@ -1,0 +1,90 @@
+@use "./mixins.scss";
+
+:root {
+  --container-width: 48rem;
+}
+
+body {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--container-width);
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+hr {
+  border-top: 1px solid var(--cmm-color-border-base);
+}
+
+.stack {
+  &-1 {
+    @include mixins.stack(0.25rem);
+  }
+  &-2 {
+    @include mixins.stack(0.5rem);
+  }
+  &-3 {
+    @include mixins.stack(0.75rem);
+  }
+  &,
+  &-4 {
+    @include mixins.stack(1rem);
+  }
+  &-5 {
+    @include mixins.stack(1.25rem);
+  }
+  &-6 {
+    @include mixins.stack(1.5rem);
+  }
+  &-7 {
+    @include mixins.stack(1.75rem);
+  }
+  &-8 {
+    @include mixins.stack(2rem);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.Markup {
+  font-size: 1.15rem;
+
+  h3 {
+    font-weight: var(--cmm-font-weight-bold);
+  }
+
+  code {
+    font-size: 0.75em;
+  }
+
+  pre {
+    code {
+      font-size: 0.8em;
+      border-radius: var(--cmm-radius-lg);
+    }
+  }
+
+  img {
+    border-radius: var(--cmm-radius-lg);
+  }
+
+  .Message,
+  table,
+  blockquote {
+    font-size: 0.94em;
+  }
+}
+
+.astro-code {
+  background-color: transparent !important;
+}

@@ -15,10 +15,26 @@ let tags = getUniqueTags(posts);
 
 <Layout title={`Tags | ${SITE.title}`}>
   <Header activeNav="tags" />
-  <Main pageTitle="Tags" pageDesc="All the tags used in posts.">
-    <ul>
+  <Main
+    pageTitle="Tags"
+    pageDesc="All the tags used in posts."
+    className="main"
+  >
+    <ul class="tags">
       {tags.map(tag => <Tag name={tag} size="lg" />)}
     </ul>
   </Main>
   <Footer />
 </Layout>
+
+<style lang="scss">
+  .main {
+    padding-bottom: 2rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>

@@ -6,7 +6,7 @@ export type SocialObjects = {
 }[];
 
 export type SocialIcons = {
-  [social in SocialMedia]: string;
+  [social in SocialMedia]: React.ReactNode;
 };
 
 export type SocialMedia =
@@ -18,15 +18,6 @@ export type SocialMedia =
   | "Twitter"
   | "Twitch"
   | "YouTube"
-  | "WhatsApp"
-  | "Snapchat"
-  | "Pinterest"
-  | "TikTok"
-  | "CodePen"
   | "Discord"
   | "GitLab"
-  | "Reddit"
-  | "Skype"
-  | "Steam"
-  | "Telegram"
-  | "Mastodon";
+  | "Telegram";

@@ -40,8 +40,9 @@ const tagPosts = getPostsByTag(posts, tag);
   <Main
     pageTitle={`Tag:${tag}`}
     pageDesc={`All the articles with the tag "${tag}".`}
+    className="main"
   >
-    <ul>
+    <ul class="stack">
       {
         tagPosts.map(({ data }) => (
           <Card href={`/posts/${slugify(data)}`} frontmatter={data} />
@@ -51,3 +52,9 @@ const tagPosts = getPostsByTag(posts, tag);
   </Main>
   <Footer />
 </Layout>
+
+<style lang="scss">
+  .main {
+    padding-bottom: 2rem;
+  }
+</style>

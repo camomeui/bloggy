@@ -1,7 +1,9 @@
 ---
+import { Markup } from "@camome/core/Markup";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import { ArrowButtonLink } from "@components/ArrowButtonLink";
 import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
 import type { CollectionEntry } from "astro:content";
@@ -22,40 +24,58 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.svg`, Astro.url.origin)
 
 <Layout title={title} author={author} description={description} ogImage={ogUrl}>
   <Header />
-  <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
-    <button
-      class="focus-outline mt-8 mb-2 flex hover:opacity-75"
-      onclick="history.back()"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg"
-        ><path
-          d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-        ></path>
-      </svg><span>Go back</span>
-    </button>
-  </div>
-  <main id="main-content">
+  <ArrowButtonLink href="/posts" direction="prev" className="back-button">
+    All posts
+  </ArrowButtonLink>
+  <main id="main-content" class="main">
     <h1 class="post-title">{title}</h1>
-    <Datetime datetime={pubDatetime} size="lg" className="my-2" />
-    <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
+    <Datetime datetime={pubDatetime} />
+    <Markup id="article" className="markup">
       <Content />
-    </article>
-
-    <ul class="tags-container">
-      {tags.map(tag => <Tag name={tag} />)}
-    </ul>
+    </Markup>
+    <aside class="aside">
+      <ul class="tags">
+        {
+          tags.map(tag => (
+            <li>
+              <Tag name={tag} />
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
   </main>
   <Footer />
 </Layout>
 
 <style>
-  main {
-    @apply mx-auto w-full max-w-3xl px-4 pb-12;
+  .back-button {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  .main {
+    padding-bottom: 3rem;
   }
   .post-title {
-    @apply text-2xl font-semibold text-skin-accent;
+    font-size: var(--cmm-font-size-4xl);
+    font-weight: var(--cmm-font-weight-bold);
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
   }
-  .tags-container {
-    @apply my-8;
+
+  .markup {
+    margin-top: 2rem;
+  }
+
+  .aside {
+    margin-block-start: 2rem;
+    padding-block-start: 2rem;
+    border-block-start: 1px solid var(--cmm-color-border-base);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 </style>

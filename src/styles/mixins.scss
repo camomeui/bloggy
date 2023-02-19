@@ -1,0 +1,5 @@
+@mixin stack($margin: 1rem) {
+  > * + * {
+    margin-block-start: $margin;
+  }
+}

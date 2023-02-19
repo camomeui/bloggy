@@ -2,8 +2,9 @@
   "name": "astro-paper",
   "version": "2.1.0",
   "private": false,
+  "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --port 3940",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -13,13 +14,20 @@
     "format": "prettier --plugin-search-dir=. --write .",
     "cz": "cz",
     "prepare": "husky install",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "camome-init": "camome theme --output public/theme.css"
   },
   "dependencies": {
     "@astrojs/rss": "^2.1.0",
+    "@camome/core": "^0.0.26",
+    "@camome/system": "^0.1.24",
+    "@camome/utils": "^0.1.10",
+    "@heroicons/react": "^2.0.16",
     "astro": "^2.0.8",
+    "clsx": "^1.2.1",
     "fuse.js": "^6.6.2",
     "github-slugger": "^2.0.0",
+    "react-icons": "^4.7.1",
     "remark-collapse": "^0.1.2",
     "remark-toc": "^8.0.1",
     "satori": "^0.2.3",
@@ -34,6 +42,7 @@
     "@types/react": "^18.0.27",
     "@typescript-eslint/parser": "^5.51.0",
     "astro-eslint-parser": "^0.11.0",
+    "camome": "^0.1.22",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.33.0",
@@ -43,7 +52,8 @@
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.58.3"
   },
   "config": {
     "commitizen": {

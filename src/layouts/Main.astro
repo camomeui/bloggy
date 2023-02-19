@@ -4,26 +4,33 @@ import Breadcrumbs from "@components/Breadcrumbs.astro";
 export interface Props {
   pageTitle: string;
   pageDesc?: string;
+  className?: string;
 }
 
-const { pageTitle, pageDesc } = Astro.props;
+const { pageTitle, pageDesc, className } = Astro.props;
 ---
 
-<Breadcrumbs />
-<main id="main-content">
+<Breadcrumbs className="breadcrumbs" />
+<main id="main-content" class={className}>
   <h1>{pageTitle}</h1>
   <p>{pageDesc}</p>
   <slot />
 </main>
 
 <style>
-  #main-content {
-    @apply mx-auto w-full max-w-3xl px-4 pb-12;
+  .breadcrumbs {
+    margin-block-start: 1rem;
   }
-  #main-content h1 {
-    @apply text-2xl font-semibold sm:text-3xl;
+
+  h1 {
+    font-size: var(--cmm-font-size-4xl);
+    font-weight: var(--cmm-font-weight-bold);
+    margin-block-start: 1.5rem;
+    line-height: 1;
   }
-  #main-content p {
-    @apply mt-2 mb-6 italic;
+
+  p {
+    margin-block-start: 1rem;
+    margin-block-end: 2rem;
   }
 </style>

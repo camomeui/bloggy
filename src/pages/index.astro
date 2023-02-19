@@ -1,12 +1,13 @@
 ---
 import { getCollection } from "astro:content";
+import { IconButton } from "@camome/core/IconButton";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import LinkButton from "@components/LinkButton.astro";
+import { ArrowButtonLink } from "@components/ArrowButtonLink";
 import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
-import Socials from "@components/Socials.astro";
+import Socials from "@components/Socials";
 import getSortedPosts from "@utils/getSortedPosts";
 import slugify from "@utils/slugify";
 import { SOCIALS } from "@config";
@@ -21,15 +22,17 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
 <Layout>
   <Header />
-  <main id="main-content">
-    <section id="hero">
+  <main id="main-content" class="stack-8">
+    <section id="hero" class="stack">
       <h1>Mingalaba</h1>
-      <a
+      <IconButton
+        component="a"
         target="_blank"
         href="/rss.xml"
-        class="rss-link"
         aria-label="rss feed"
         title="RSS Feed"
+        variant="ghost"
+        colorScheme="neutral"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
           ><path
@@ -38,7 +41,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
           ></path><circle cx="6" cy="18" r="2"></circle>
         </svg>
-      </a>
+      </IconButton>
 
       <p>
         AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
@@ -48,18 +51,14 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </p>
       <p>
         Read the blog posts or check
-        <LinkButton
-          className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton> for more info.
+        <a href="https://github.com/satnaing/astro-paper#readme"> README</a> for
+        more info.
       </p>
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
-            <div class="social-links">Social Links:</div>
+            <div class="sr-only">Social Links:</div>
             <Socials />
           </div>
         )
@@ -71,9 +70,9 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     {
       featuredPosts.length > 0 && (
         <>
-          <section id="featured">
+          <section id="featured" class="posts stack">
             <h2>Featured</h2>
-            <ul>
+            <ul class="stack">
               {featuredPosts.map(({ data }) => (
                 <Card
                   href={`/posts/${slugify(data)}`}
@@ -88,9 +87,9 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       )
     }
 
-    <section id="recent-posts">
+    <section id="recent" class="stack">
       <h2>Recent Posts</h2>
-      <ul>
+      <ul class="stack">
         {
           sortedPosts.map(
             ({ data }, index) =>
@@ -104,56 +103,40 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           )
         }
       </ul>
-      <div class="all-posts-btn-wrapper">
-        <LinkButton href="/posts">
-          All Posts
-          <svg xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-            ></path>
-          </svg>
-        </LinkButton>
-      </div>
+      <ArrowButtonLink direction="next" href="/posts" className="all-posts">
+        All posts
+      </ArrowButtonLink>
     </section>
   </main>
-
   <Footer />
 </Layout>
 
-<style>
-  /* ===== Hero Section ===== */
-  #hero {
-    @apply pt-8 pb-6;
-  }
-  #hero h1 {
-    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
-  }
-  #hero .rss-link {
-    @apply mb-6;
-  }
-  #hero .rss-icon {
-    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
-  }
-  #hero p {
-    @apply my-2;
-  }
-  .social-wrapper {
-    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
-  }
-  .social-links {
-    @apply mr-2 mb-1 whitespace-nowrap sm:mb-0;
+<style lang="scss">
+  #main-content {
+    padding-bottom: 3rem;
   }
 
-  /* ===== Featured & Recent Posts Sections ===== */
-  #featured,
-  #recent-posts {
-    @apply pt-12 pb-6;
+  #hero {
+    h1 {
+      display: inline-block;
+      font-size: var(--cmm-font-size-5xl);
+      font-weight: var(--cmm-font-weight-extrabold);
+    }
   }
-  #featured h2,
-  #recent-posts h2 {
-    @apply text-2xl font-semibold tracking-wide;
+
+  .all-posts {
+    margin-block-start: 1.5rem;
   }
-  .all-posts-btn-wrapper {
-    @apply my-8 text-center;
+
+  .social-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  h2 {
+    font-size: var(--cmm-font-size-2xl);
+    font-weight: var(--cmm-font-weight-bold);
   }
 </style>

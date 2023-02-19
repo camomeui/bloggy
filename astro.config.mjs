@@ -1,22 +1,14 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-import react from "@astrojs/react";
-import remarkToc from "remark-toc";
-import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
+import react from "@astrojs/react";
+import { generateScopedName, hash } from "@camome/utils";
+import remarkCollapse from "remark-collapse";
+import remarkToc from "remark-toc";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://astro-paper.pages.dev/",
-  integrations: [
-    tailwind({
-      config: {
-        applyBaseStyles: false,
-      },
-    }),
-    react(),
-    sitemap(),
-  ],
+  integrations: [react(), sitemap()],
   markdown: {
     remarkPlugins: [
       remarkToc,
@@ -27,10 +19,24 @@ export default defineConfig({
         },
       ],
     ],
-    shikiConfig: {
-      theme: "one-dark-pro",
-      wrap: true,
-    },
     extendDefaultPlugins: true,
+  },
+  vite: {
+    ssr: {
+      noExternal: ["@camome/core"],
+    },
+    css: {
+      modules: {
+        generateScopedName(name, filename) {
+          // @camome/core depends on static class names
+          // but your own module classes won't.
+          if (!filename.match(/@camome\/core/)) {
+            // Whatever.
+            return name + "-" + hash(filename);
+          }
+          return generateScopedName(name, filename);
+        },
+      },
+    },
   },
 });

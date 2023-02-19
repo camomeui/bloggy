@@ -1,4 +1,10 @@
 ---
+export type Props = {
+  className?: string;
+};
+
+const { className } = Astro.props;
+
 // Remove current url path and remove trailing slash if exists
 const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "");
 
@@ -12,11 +18,11 @@ breadcrumbList[0] === "posts" &&
   breadcrumbList.splice(0, 2, `Posts (page ${breadcrumbList[1] || 1})`);
 ---
 
-<nav class="breadcrumb" aria-label="breadcrumb">
+<nav class:list={["breadcrumb", className]} aria-label="breadcrumb">
   <ul>
     <li>
       <a href="/">Home</a>
-      <span aria-hidden="true">&#62;</span>
+      <span aria-hidden="true" class="separator">/</span>
     </li>
     {
       breadcrumbList.map((breadcrumb, index) =>
@@ -33,7 +39,9 @@ breadcrumbList[0] === "posts" &&
         ) : (
           <li>
             <a href={`/${breadcrumb}`}>{breadcrumb}</a>
-            <span aria-hidden="true">&#62;</span>
+            <span aria-hidden="true" class="separator">
+              /
+            </span>
           </li>
         )
       )
@@ -41,20 +49,35 @@ breadcrumbList[0] === "posts" &&
   </ul>
 </nav>
 
-<style>
+<style lang="scss">
   .breadcrumb {
-    @apply mx-auto mt-8 mb-1 w-full max-w-3xl px-4;
-  }
-  .breadcrumb ul li {
-    @apply inline;
-  }
-  .breadcrumb ul li a {
-    @apply capitalize opacity-70;
-  }
-  .breadcrumb ul li span {
-    @apply opacity-70;
-  }
-  .breadcrumb ul li:not(:last-child) a {
-    @apply hover:opacity-100;
+    font-size: var(--cmm-font-size-md);
+    color: var(--cmm-color-font-subtle);
+
+    ul {
+      display: flex;
+      align-items: center;
+    }
+
+    ul li {
+      display: flex;
+      align-items: center;
+      font-weight: var(--cmm-font-weight-medium);
+    }
+
+    a {
+      color: var(--cmm-color-font-base);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .separator {
+      display: block;
+      font-weight: var(--cmm-font-weight-semibold);
+      margin-inline: 0.75em;
+      font-size: 0.9em;
+    }
   }
 </style>

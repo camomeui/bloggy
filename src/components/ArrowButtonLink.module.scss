@@ -1,0 +1,21 @@
+.container {
+  &:global(.Button) {
+    --cmm-Button-icon-margin: 0.25em;
+
+    padding: 0;
+    height: 1em;
+    font-size: var(--cmm-font-size-md);
+
+    &:hover {
+      background: none;
+      text-decoration: underline;
+    }
+
+    svg {
+      $size: 1em;
+      stroke-width: 2.8;
+      height: $size;
+      width: $size;
+    }
+  }
+}
