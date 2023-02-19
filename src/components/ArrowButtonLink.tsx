@@ -1,5 +1,5 @@
 import { Button, type ButtonProps } from "@camome/core/Button";
-import { TbChevronLeft, TbChevronRight } from "react-icons/tb";
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import clsx from "clsx";
 
 import styles from "./ArrowButtonLink.module.scss";
@@ -18,10 +18,10 @@ export function ArrowButtonLink({
   const arrowProps: Partial<Omit<ButtonProps, "ref">> =
     direction === "next"
       ? {
-          endDecorator: <TbChevronRight />,
+          endDecorator: <IconChevronRight />,
         }
       : {
-          startDecorator: <TbChevronLeft />,
+          startDecorator: <IconChevronLeft />,
         };
 
   return (

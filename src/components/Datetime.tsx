@@ -1,4 +1,4 @@
-import { CalendarDaysIcon } from "@heroicons/react/24/outline";
+import { IconCalendarEvent } from "@tabler/icons-react";
 import clsx from "clsx";
 import styles from "./Datetime.module.scss";
 
@@ -10,7 +10,7 @@ export interface Props {
 export default function Datetime({ datetime, className }: Props) {
   return (
     <div className={clsx(styles.container, className)}>
-      <CalendarDaysIcon className={styles.calender} />
+      <IconCalendarEvent className={styles.calender} />
       <span className="sr-only">Posted on:</span>
       <span>
         <FormattedDatetime datetime={datetime} />

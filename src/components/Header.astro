@@ -1,6 +1,6 @@
 ---
 import { IconButton } from "@camome/core/IconButton";
-import { TbSearch, TbSun, TbMoon } from "react-icons/tb";
+import { IconSearch, IconSun, IconMoon } from "@tabler/icons-react";
 import { LOGO_IMAGE, SITE } from "@config";
 
 import logoPNG from "/assets/logo.png";
@@ -70,7 +70,7 @@ const { activeNav } = Astro.props;
               colorScheme="neutral"
               size="sm"
             >
-              <TbSearch strokeWidth={2.5} />
+              <IconSearch strokeWidth={2.2} />
             </IconButton>
           </li>
           <li>
@@ -84,7 +84,7 @@ const { activeNav } = Astro.props;
                   colorScheme="neutral"
                   size="sm"
                 >
-                  <TbSun strokeWidth={2.2} />
+                  <IconSun strokeWidth={2.2} />
                 </IconButton>
               )
             }

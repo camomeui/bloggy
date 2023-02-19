@@ -8,7 +8,7 @@ specifiers:
   '@camome/core': ^0.0.26
   '@camome/system': ^0.1.24
   '@camome/utils': ^0.1.10
-  '@heroicons/react': ^2.0.16
+  '@tabler/icons-react': ^2.4.0
   '@tailwindcss/typography': ^0.5.9
   '@types/github-slugger': ^1.3.0
   '@types/react': ^18.0.27
@@ -29,7 +29,6 @@ specifiers:
   prettier-plugin-tailwindcss: ^0.2.2
   react: ^18.2.0
   react-dom: ^18.2.0
-  react-icons: ^4.7.1
   remark-collapse: ^0.1.2
   remark-toc: ^8.0.1
   sass: ^1.58.3
@@ -41,12 +40,11 @@ dependencies:
   '@camome/core': 0.0.26_react@18.2.0
   '@camome/system': 0.1.24
   '@camome/utils': 0.1.10
-  '@heroicons/react': 2.0.16_react@18.2.0
+  '@tabler/icons-react': 2.4.0_react@18.2.0
   astro: 2.0.14_sass@1.58.3
   clsx: 1.2.1
   fuse.js: 6.6.2
   github-slugger: 2.0.0
-  react-icons: 4.7.1_react@18.2.0
   remark-collapse: 0.1.2
   remark-toc: 8.0.1
   satori: 0.2.5
@@ -714,14 +712,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@heroicons/react/2.0.16_react@18.2.0:
-    resolution: {integrity: sha512-x89rFxH3SRdYaA+JCXwfe+RkE1SFTo9GcOkZettHer71Y3T7V+ogKmfw5CjTazgS3d0ClJ7p1NA+SP7VQLQcLw==}
-    peerDependencies:
-      react: '>= 16'
-    dependencies:
-      react: 18.2.0
-    dev: false
-
   /@humanwhocodes/config-array/0.11.8:
     resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}
     engines: {node: '>=10.10.0'}
@@ -828,6 +818,20 @@ packages:
     dependencies:
       fflate: 0.7.4
       string.prototype.codepointat: 0.2.1
+    dev: false
+
+  /@tabler/icons-react/2.4.0_react@18.2.0:
+    resolution: {integrity: sha512-U04bSknpXPdZP8soAnMPiz4g6PXPfWHfMoe2qhDoRlnS8UJ8JHHE/k4Lx4rw2Tfy9a2QJeoPV5HQIeKXrNPHGA==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tabler/icons': 2.4.0
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
+  /@tabler/icons/2.4.0:
+    resolution: {integrity: sha512-JZY9Kk3UsQoqp7Rw/BuWw1PrkRwv5h0psjJBbj+Cn9UVyhdzr5vztg2mywXBAJ+jFBUL/pjnVcIvOzKFw4CXng==}
     dev: false
 
   /@tailwindcss/typography/0.5.9_tailwindcss@3.2.7:
@@ -3304,6 +3308,11 @@ packages:
     dependencies:
       path-key: 4.0.0
 
+  /object-assign/4.1.1:
+    resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /object-hash/3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
     engines: {node: '>= 6'}
@@ -3693,6 +3702,14 @@ packages:
       kleur: 3.0.3
       sisteransi: 1.0.5
 
+  /prop-types/15.8.1:
+    resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react-is: 16.13.1
+    dev: false
+
   /property-information/6.2.0:
     resolution: {integrity: sha512-kma4U7AFCTwpqq5twzC1YVIDXSqg6qQK6JN0smOw8fgRy1OkMi0CYSzFmsy6dnqSenamAtj0CyXMUJ1Mf6oROg==}
 
@@ -3718,12 +3735,8 @@ packages:
       scheduler: 0.23.0
     dev: true
 
-  /react-icons/4.7.1_react@18.2.0:
-    resolution: {integrity: sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==}
-    peerDependencies:
-      react: '*'
-    dependencies:
-      react: 18.2.0
+  /react-is/16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
 
   /react/18.2.0:

@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { IconRss } from "@tabler/icons-react";
 import { IconButton } from "@camome/core/IconButton";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
@@ -23,25 +24,21 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 <Layout>
   <Header />
   <main id="main-content" class="stack-8">
-    <section id="hero" class="stack">
-      <h1>Mingalaba</h1>
-      <IconButton
-        component="a"
-        target="_blank"
-        href="/rss.xml"
-        aria-label="rss feed"
-        title="RSS Feed"
-        variant="ghost"
-        colorScheme="neutral"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
-          ><path
-            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-          ></path><path
-            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path><circle cx="6" cy="18" r="2"></circle>
-        </svg>
-      </IconButton>
+    <section id="hero" class="stack-5">
+      <div>
+        <h1>Mingalaba</h1>
+        <IconButton
+          component="a"
+          target="_blank"
+          href="/rss.xml"
+          aria-label="rss feed"
+          title="RSS Feed"
+          variant="ghost"
+          colorScheme="neutral"
+        >
+          <IconRss />
+        </IconButton>
+      </div>
 
       <p>
         AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
@@ -117,10 +114,13 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   }
 
   #hero {
+    padding-block-start: 2rem;
+
     h1 {
       display: inline-block;
       font-size: var(--cmm-font-size-5xl);
       font-weight: var(--cmm-font-weight-extrabold);
+      line-height: 1;
     }
   }
 
