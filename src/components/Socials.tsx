@@ -17,6 +17,7 @@ export default function Socials({ centered }: Props) {
           aria-label={social.linkTitle}
           variant="ghost"
           colorScheme="neutral"
+          key={social.name}
         >
           {socialIcons[social.name]}
         </IconButton>
