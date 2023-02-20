@@ -5,7 +5,7 @@ specifiers:
   '@astrojs/rss': ^2.1.0
   '@astrojs/sitemap': ^1.0.1
   '@astrojs/tailwind': ^3.0.1
-  '@camome/core': ^0.0.26
+  '@camome/core': ^0.0.28
   '@camome/system': ^0.1.24
   '@camome/utils': ^0.1.10
   '@tabler/icons-react': ^2.4.0
@@ -37,7 +37,7 @@ specifiers:
 
 dependencies:
   '@astrojs/rss': 2.1.1
-  '@camome/core': 0.0.26_react@18.2.0
+  '@camome/core': 0.0.28_react@18.2.0
   '@camome/system': 0.1.24
   '@camome/utils': 0.1.10
   '@tabler/icons-react': 2.4.0_react@18.2.0
@@ -405,8 +405,8 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
 
-  /@camome/core/0.0.26_react@18.2.0:
-    resolution: {integrity: sha512-8sacnY8A4DqgVWdAJj3/as5FyV3JT8gd0U82UOl06IuOORsAFzAYov8OzNyf6mUxab6nTpqolrOwMJn/qzQKbg==}
+  /@camome/core/0.0.28_react@18.2.0:
+    resolution: {integrity: sha512-G8SZ+7OmVR9ildyxpzdFXjRwVgwyDkikmWhzyo/G8cwbjQfRDsMwgFGwRDsc83Knm3z3tvA46MT/v7thFmzx8A==}
     peerDependencies:
       react: '>=18'
     dependencies:

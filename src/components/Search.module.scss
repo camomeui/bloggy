@@ -1,0 +1,20 @@
+.container {
+  padding-block-end: 3rem;
+}
+
+.input-group {
+  :global {
+    .TextInputGroup {
+      --cmm-TextInput-start-decor-width: 2rem;
+      width: 100%;
+
+      svg {
+        $size: 1.1rem;
+        width: $size;
+        height: $size;
+        stroke-width: 2.5;
+        color: var(--cmm-color-font-subtle);
+      }
+    }
+  }
+}

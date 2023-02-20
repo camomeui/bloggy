@@ -84,7 +84,8 @@ const { activeNav } = Astro.props;
                   colorScheme="neutral"
                   size="sm"
                 >
-                  <IconSun strokeWidth={2.2} />
+                  <IconSun strokeWidth={2.2} id="sun-icon" />
+                  <IconMoon id="moon-icon" />
                 </IconButton>
               )
             }
@@ -157,6 +158,15 @@ const { activeNav } = Astro.props;
         }
       }
     }
+  }
+</style>
+
+<style lang="scss" is:global>
+  [data-theme="light"] #sun-icon {
+    display: none;
+  }
+  [data-theme="dark"] #moon-icon {
+    display: none;
   }
 </style>
 
