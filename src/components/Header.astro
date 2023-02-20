@@ -1,6 +1,6 @@
 ---
 import { IconButton } from "@camome/core/IconButton";
-import { IconSearch, IconSun, IconMoon } from "@tabler/icons-react";
+import { IconSearch, IconSun, IconMoon, IconMenu2 } from "@tabler/icons-react";
 import { LOGO_IMAGE, SITE } from "@config";
 
 import logoPNG from "/assets/logo.png";
@@ -11,6 +11,21 @@ export interface Props {
 }
 
 const { activeNav } = Astro.props;
+
+const menuItems: { href: string; label: string }[] = [
+  {
+    href: "/posts",
+    label: "Posts",
+  },
+  {
+    href: "/tags",
+    label: "Tags",
+  },
+  {
+    href: "/about",
+    label: "About",
+  },
+];
 ---
 
 <header>
@@ -31,35 +46,31 @@ const { activeNav } = Astro.props;
           )
         }
       </a>
-      <nav id="nav-menu">
-        <button
-          class="hamburger-menu focus-outline"
+      <nav>
+        <IconButton
+          className="hamburger-menu"
           aria-label="Open Menu"
           aria-expanded="false"
           aria-controls="menu-items"
+          size="sm"
+          variant="ghost"
+          colorScheme="neutral"
         >
-          <div class="icon-container flex">
-            <div id="first-line"></div>
-            <div id="second-line"></div>
-            <div id="third-line"></div>
-          </div>
-        </button>
-        <ul id="menu-items" class="display-none sm:flex">
-          <li>
-            <a href="/posts" class={activeNav === "posts" ? "active" : ""}>
-              Posts
-            </a>
-          </li>
-          <li>
-            <a href="/tags" class={activeNav === "tags" ? "active" : ""}>
-              Tags
-            </a>
-          </li>
-          <li>
-            <a href="/about" class={activeNav === "about" ? "active" : ""}>
-              About
-            </a>
-          </li>
+          <IconMenu2 />
+        </IconButton>
+        <ul id="menu-items">
+          {
+            menuItems.map(({ href, label }) => (
+              <li>
+                <a
+                  href={href}
+                  class={activeNav === href.replace("/", "") ? "active" : ""}
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
           <li>
             <IconButton
               component="a"
@@ -78,7 +89,6 @@ const { activeNav } = Astro.props;
               SITE.lightAndDarkMode && (
                 <IconButton
                   id="theme-btn"
-                  className="focus-outline"
                   aria-label="Toggle light & dark"
                   variant="ghost"
                   colorScheme="neutral"
@@ -97,8 +107,9 @@ const { activeNav } = Astro.props;
 </header>
 
 <style lang="scss">
+  $menu-break-width: 40rem;
+
   header {
-    height: 4rem;
     background: var(--cmm-color-surface-0);
   }
   #skip-to-content {
@@ -106,9 +117,11 @@ const { activeNav } = Astro.props;
     top: -100%;
     left: 1rem;
     z-index: 50;
-    padding: 0.75rem 0.5rem;
-    background: var(--cmm-color-surface-0);
+    padding: 1rem;
+    background: var(--cmm-color-surface-2);
     color: var(--cmm-color-font-base);
+    border-radius: var(--cmm-radius-lg);
+    font-weight: var(--cmm-font-weight-semibold);
   }
   #skip-to-content:focus {
     top: 1rem;
@@ -120,25 +133,55 @@ const { activeNav } = Astro.props;
   .top-nav-wrap {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 100%;
+    padding-block: 1rem;
   }
   .logo {
+    line-height: 2rem;
     font-weight: var(--cmm-font-weight-extrabold);
     font-size: var(--cmm-font-size-2xl);
-  }
-  .hamburger-menu {
-  }
-  .hamburger-menu svg {
+
+    @media (max-width: $menu-break-width) {
+      position: absolute;
+    }
   }
 
   nav {
     display: flex;
+    flex-direction: column;
+
+    @media (max-width: $menu-break-width) {
+      width: 100%;
+    }
+
+    .hamburger-menu {
+      display: none;
+      align-self: flex-end;
+      @media (max-width: $menu-break-width) {
+        display: inline-flex;
+      }
+    }
 
     ul {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      column-gap: 0.5rem;
+      row-gap: 1rem;
+
+      @media (max-width: $menu-break-width) {
+        display: none;
+        &.open {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin-block-start: 1rem;
+        }
+
+        li,
+        a,
+        :global(.IconButton) {
+          width: 100%;
+        }
+      }
 
       li a {
         display: inline-flex;
@@ -175,35 +218,16 @@ const { activeNav } = Astro.props;
   const menuBtn = document.querySelector(".hamburger-menu");
   const menuItems = document.querySelector("#menu-items")?.classList;
 
-  const iconContainer = document.querySelector(".icon-container")?.classList;
-  const firstLine = document.querySelector("#first-line")?.classList;
-  const secondLine = document.querySelector("#second-line ")?.classList;
-  const thirdLine = document.querySelector("#third-line")?.classList;
-
   menuBtn?.addEventListener("click", function () {
     const menuExpanded = menuBtn?.getAttribute("aria-expanded");
     if (menuExpanded === "false") {
       menuBtn?.setAttribute("aria-expanded", "true");
       menuBtn?.setAttribute("aria-label", "Close Menu");
-      menuItems?.remove("display-none");
-
-      // icon animation
-      iconContainer?.remove("flex");
-      iconContainer?.add("relative");
-      firstLine?.add("rotate-45", "absolute", "bottom-1/2");
-      thirdLine?.add("display-none");
-      secondLine?.add("!w-full", "-rotate-45", "absolute", "bottom-1/2");
+      menuItems?.add("open");
     } else {
       menuBtn?.setAttribute("aria-expanded", "false");
       menuBtn?.setAttribute("aria-label", "Open Menu");
-      menuItems?.add("display-none");
-
-      // icon animation
-      iconContainer?.add("flex");
-      iconContainer?.remove("relative");
-      firstLine?.remove("rotate-45", "absolute", "bottom-1/2");
-      thirdLine?.remove("display-none");
-      secondLine?.remove("!w-full", "-rotate-45", "absolute", "bottom-1/2");
+      menuItems?.remove("open");
     }
   });
 </script>
