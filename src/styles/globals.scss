@@ -106,6 +106,10 @@ hr {
       font-size: var(--cmm-font-size-sm);
       font-weight: var(--cmm-font-weight-semibold);
 
+      [data-theme="dark"] & {
+        background: var(--cmm-color-surface-1);
+      }
+
       &:hover {
         background: var(--cmm-color-surface-2);
       }
