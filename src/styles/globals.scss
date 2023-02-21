@@ -94,3 +94,40 @@ hr {
     border: none;
   }
 }
+
+#table-of-contents {
+  ~ details {
+    summary {
+      margin-block-end: 1em;
+      cursor: pointer;
+      border: 1px solid var(--cmm-color-border-base);
+      border-radius: var(--cmm-radius-md);
+      padding: 0.4em 0.7em;
+      font-size: var(--cmm-font-size-sm);
+      font-weight: var(--cmm-font-weight-semibold);
+
+      &:hover {
+        background: var(--cmm-color-surface-2);
+      }
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+    }
+
+    ul,
+    li,
+    p {
+      margin: 0;
+      gap: 0;
+    }
+
+    p {
+      line-height: 1;
+    }
+
+    :where(ul, li):not(:first-child) {
+      margin-block-start: 0.4em;
+    }
+  }
+}
