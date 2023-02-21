@@ -87,38 +87,38 @@ hr {
 
 .astro-code {
   border-radius: var(--cmm-radius-lg);
-  padding: 1rem;
 
   code {
     background: transparent;
     border: none;
+    padding: 1rem;
+  }
+}
+
+summary {
+  margin-block-end: 1em;
+  cursor: pointer;
+  border: 1px solid var(--cmm-color-border-base);
+  border-radius: var(--cmm-radius-md);
+  padding: 0.4em 0.7em;
+  font-size: var(--cmm-font-size-sm);
+  font-weight: var(--cmm-font-weight-semibold);
+
+  [data-theme="dark"] & {
+    background: var(--cmm-color-surface-1);
+  }
+
+  &:hover {
+    background: var(--cmm-color-surface-2);
+  }
+
+  &::-webkit-details-marker {
+    display: none;
   }
 }
 
 #table-of-contents {
-  ~ details {
-    summary {
-      margin-block-end: 1em;
-      cursor: pointer;
-      border: 1px solid var(--cmm-color-border-base);
-      border-radius: var(--cmm-radius-md);
-      padding: 0.4em 0.7em;
-      font-size: var(--cmm-font-size-sm);
-      font-weight: var(--cmm-font-weight-semibold);
-
-      [data-theme="dark"] & {
-        background: var(--cmm-color-surface-1);
-      }
-
-      &:hover {
-        background: var(--cmm-color-surface-2);
-      }
-
-      &::-webkit-details-marker {
-        display: none;
-      }
-    }
-
+  + p + details {
     ul,
     li,
     p {
