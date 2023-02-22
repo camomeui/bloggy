@@ -9,7 +9,7 @@ type Props = {
   direction: "next" | "prev";
 } & Omit<ButtonProps, "ref">;
 
-export function ArrowButtonLink({
+export default function ArrowButtonLink({
   href,
   direction,
   className,
