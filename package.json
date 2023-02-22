@@ -2,7 +2,6 @@
   "name": "astro-paper",
   "version": "2.1.0",
   "private": false,
-  "type": "module",
   "scripts": {
     "dev": "astro dev --port 3940",
     "start": "astro dev",

@@ -6,7 +6,7 @@ import styles from "./Socials.module.scss";
 export default function Socials() {
   return (
     <div className={styles.container}>
-      {SOCIALS.filter(social => social.active).map(social => (
+      {SOCIALS.filter((social) => social.active).map((social) => (
         <IconButton
           component="a"
           href={social.href}

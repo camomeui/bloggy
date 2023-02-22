@@ -36,7 +36,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.svg`, Astro.url.origin)
     <aside class="aside">
       <ul class="tags">
         {
-          tags.map(tag => (
+          tags.map((tag) => (
             <li>
               <Tag name={tag} />
             </li>

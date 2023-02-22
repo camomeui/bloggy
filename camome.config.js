@@ -1,4 +1,4 @@
-import { defineConfig } from "@camome/system";
+const { defineConfig } = require("@camome/system");
 
 const config = defineConfig({
   themes: {
@@ -13,4 +13,4 @@ const config = defineConfig({
   }
 });
 
-export default config;
+module.exports = config;
