@@ -9,6 +9,7 @@ export interface Props {
   author?: string;
   description?: string;
   ogImage?: string;
+  className?: string;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   author = SITE.author,
   description = SITE.desc,
   ogImage = SITE.ogImage,
+  className,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -86,7 +88,7 @@ const fallbackImageURL = new URL(SITE.ogImage, Astro.url.origin).href;
 
     <script is:inline src="/toggle-theme.js"></script>
   </head>
-  <body>
+  <body class={className}>
     <slot />
   </body>
 </html>

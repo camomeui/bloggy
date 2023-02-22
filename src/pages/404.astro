@@ -6,11 +6,11 @@ import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
 ---
 
-<Layout title={`404 Not Found | ${SITE.title}`}>
+<Layout title={`404 Not Found | ${SITE.title}`} className="container">
   <Header />
 
   <main id="main-content">
-    <div class="not-found-wrapper">
+    <div class="not-found-wrapper stack">
       <h1 aria-label="404 Not Found">404</h1>
       <span aria-hidden="true">¯\_(ツ)_/¯</span>
       <p>Page Not Found</p>
@@ -26,17 +26,34 @@ import LinkButton from "@components/LinkButton.astro";
   <Footer />
 </Layout>
 
-<style>
+<style lang="scss">
+  .container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+    min-height: 100dvh;
+  }
   #main-content {
-    @apply mx-auto flex max-w-3xl flex-1 items-center justify-center;
+    display: grid;
+    place-items: center;
   }
   .not-found-wrapper {
-    @apply mb-14 flex flex-col items-center justify-center;
-  }
-  .not-found-wrapper h1 {
-    @apply text-skin-accent text-9xl font-bold;
-  }
-  .not-found-wrapper p {
-    @apply mt-4 text-2xl sm:text-3xl;
+    text-align: center;
+
+    h1 {
+      font-size: 8rem;
+      font-weight: var(--cmm-font-weight-bold);
+      line-height: 1;
+    }
+
+    p {
+      font-size: 2rem;
+    }
+
+    a {
+      color: var(--cmm-color-link);
+      font-weight: var(--cmm-font-weight-medium);
+      text-decoration: underline;
+    }
   }
 </style>
