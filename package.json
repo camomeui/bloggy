@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@astrojs/rss": "^2.1.0",
-    "@camome/core": "^0.0.28",
+    "@camome/core": "^0.0.29",
     "@camome/system": "^0.1.24",
     "@camome/utils": "^0.1.10",
     "@tabler/icons-react": "^2.4.0",

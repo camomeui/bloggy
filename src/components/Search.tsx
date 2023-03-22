@@ -1,11 +1,11 @@
 import Fuse from "fuse.js";
-import { TextInput } from "@camome/core/TextInput";
+import { Input } from "@camome/core/Input";
+import { InputGroup } from "@camome/core/InputGroup";
 import { IconSearch } from "@tabler/icons-react";
 import { useEffect, useRef, useState } from "react";
 import Card from "@components/Card";
 import slugify from "@utils/slugify";
 import type { BlogFrontmatter } from "@content/_schemas";
-import { TextInputGroup } from "@camome/core/TextInputGroup";
 import styles from "./Search.module.scss";
 import clsx from "clsx";
 
@@ -76,10 +76,10 @@ export default function SearchBar({ searchList }: Props) {
 
   return (
     <div className={clsx(styles.container, "stack-6")}>
-      <TextInputGroup
+      <InputGroup
         startDecorator={<IconSearch />}
         input={
-          <TextInput
+          <Input
             type="search"
             placeholder="Search"
             fill
